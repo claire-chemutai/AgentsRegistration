@@ -77,8 +77,7 @@ public class AddingDetailsController implements Initializable {
     float canopyCost=100;
     float cost;
     
-        
-    //Person cust= new Person();
+   
     
     /**
      * Initializes the controller class.
@@ -105,7 +104,7 @@ public class AddingDetailsController implements Initializable {
             System.exit(0);
         }
         System.out.println("Connection established");
-        System.out.println(dtf.format(localDate)); //2016/11/16
+        System.out.println(dtf.format(localDate)); 
        
       
         
@@ -130,23 +129,7 @@ public class AddingDetailsController implements Initializable {
             System.err.println(e);
             System.exit(0);
         }
-      /*
-       if (addItemID.getValue().equalsIgnoreCase("TABLES")){
-            tableDetails=new TableClass(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),Integer.parseInt(addQuantityID.getText()));
-            //(Float.parseFloat(addQuantityID.getText())*tableCost*days));
-        }
-        else if (addItemID.getValue().equalsIgnoreCase("CHAIRS")){
-            chairDetails=new ChairsClass(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),Integer.parseInt(addQuantityID.getText()));
-        }
-        else if (addItemID.getValue().equalsIgnoreCase("CANOPIES")){
-            canopyDetails=new CanopiesClass(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),Integer.parseInt(addQuantityID.getText()));
-        }
-        else System.out.println("No item Selected");
-        
-       */
+
        
        
         System.out.println("CREATING A PERSON!!");
@@ -176,27 +159,20 @@ public class AddingDetailsController implements Initializable {
         }
         
         System.out.println("PERSON CREATED");
-        //try{
+        
             String customer= personDetails.getCustomer();
             Integer phone=personDetails.getPhone_number();
             String address=personDetails.getAddress();
             String item= personDetails.getItem();
             Integer quantity=personDetails.getQuantity();
             Float cost=personDetails.getCost();
-            //String date=personDetails.getDate();
-        //thisStage.close();
-        //System.out.println(username+pass_word+account_type);
-        //}catch(NullPointerException n ){
-            //System.out.println(n.toString());
-        //}
-        //if (isNew){
+            
         System.out.println("INSERTING A PERSON!!");
         try {
             PreparedStatement p = conn.prepareStatement("Insert Into person set  customer=?, phone_No=?"
                     + " ,address=?,item=?, quantities=? , cost=?,dates=?");
             System.out.println("INSERTING PERSON.....");
             
-             //p.setString(1, e_id);
             p.setString(1, addNameID.getText());
             p.setInt(2, Integer.valueOf(addPhoneID.getText()));
             p.setString(3, addAddressID.getText());
@@ -222,15 +198,12 @@ public class AddingDetailsController implements Initializable {
             PreparedStatement t = conn.prepareStatement("Insert Into tables set  customer=?, phone_No=?"
                     + " ,address=?, quantities=?,dates=? , cost=?");
             System.out.println("INSERTING TABLE.....");
-            
-             //p.setString(1, e_id);
             t.setString(1, addNameID.getText());
             t.setInt(2, Integer.valueOf(addPhoneID.getText()));
             t.setString(3, addAddressID.getText());
             t.setInt(4, Integer.valueOf(addQuantityID.getText()));
             t.setString(5, dtf.format(localDate));
             t.setFloat(6, (Float.parseFloat(addQuantityID.getText())*tableCost*days));
-            //p.setString(7, localDate.toString());
             t.execute(); //use execute if no results expected back
             System.out.println(t);
             
@@ -250,15 +223,12 @@ public class AddingDetailsController implements Initializable {
             PreparedStatement h = conn.prepareStatement("Insert Into chairs set  customer=?, phone_No=?"
                     + " ,address=?, quantities=? ,dates=?, cost=?");
             System.out.println("INSERTING CHAIR.....");
-            
-             //p.setString(1, e_id);
             h.setString(1, addNameID.getText());
             h.setInt(2, Integer.valueOf(addPhoneID.getText()));
             h.setString(3, addAddressID.getText());
             h.setInt(4,Integer.valueOf(addQuantityID.getText()));
             h.setString(5, dtf.format(localDate));
             h.setFloat(6, (Float.parseFloat(addQuantityID.getText())*chairCost*days));
-            //p.setString(7, localDate.toString());
             h.execute(); //use execute if no results expected back
             System.out.println(h);
             
@@ -279,14 +249,12 @@ public class AddingDetailsController implements Initializable {
             
             System.out.println("INSERTING CANOPY.....");
             
-             //p.setString(1, e_id);
             c.setString(1, addNameID.getText());
             c.setInt(2, Integer.valueOf(addPhoneID.getText()));
             c.setString(3, addAddressID.getText());
             c.setInt(4, Integer.valueOf(addQuantityID.getText()));
             c.setString(5, dtf.format(localDate));
             c.setFloat(6, (Float.parseFloat(addQuantityID.getText())*canopyCost*days));
-            //p.setString(7, localDate.toString());
             c.execute(); //use execute if no results expected back
             System.out.println(c);
             
@@ -298,7 +266,7 @@ public class AddingDetailsController implements Initializable {
                    }
             else System.out.println("No item Selected");
         
-   // }
+  
         return personDetails;
     }
     
@@ -317,7 +285,6 @@ public class AddingDetailsController implements Initializable {
             addAddressID.setText(p.getAddress());
             addItemID.setValue(p.getItem());
             addQuantityID.setText(p.getQuantity().toString());
-            //addDateID.setDate(localDate);
             
             
         } else {
@@ -326,7 +293,6 @@ public class AddingDetailsController implements Initializable {
             addAddressID.setText(" " );
             addItemID.setValue(" ");
             addQuantityID.setText(" ");
-            //addPhoneID.setText(" ");
         }
         System.out.println("DONE TAKING DETAILS OF THE CUSTOMER");
     }

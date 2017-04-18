@@ -355,14 +355,17 @@ public class DetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) addDetailBtn.getScene().getWindow();
         stage.setScene(scene);
-//        addCustomerController.showCustomerDetail(selectedCustomer, isNew);
-        //detailStage.showAndWait();
-        /*
-        if (isNew) {
-            System.out.println("adding new Employee");
-            userRecordsTable.getItems().add(selectedEmployee);
-        }
-       */
+        System.out.println("finished detail stage");
+    
+    }
+    
+    private void showDetailStage1(Person selectedCustomer, boolean isNew) throws IOException, NullPointerException
+    , RuntimeException{
+        System.out.println("On detail stage");
+        Parent root = FXMLLoader.load(getClass().getResource("editDetails.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+        stage.setScene(scene);
         System.out.println("finished detail stage");
     
     }
@@ -372,7 +375,7 @@ public class DetailsController implements Initializable {
         Person selectedCustomer = null;
         boolean isNew = true;
         showDetailStage(selectedCustomer, isNew);
-        //data.clear();
+        
         
         try {
             Parent root = FXMLLoader.load(getClass().getResource("details.fxml"));
@@ -386,7 +389,11 @@ public class DetailsController implements Initializable {
     }
 
     @FXML
-    private void editDetailsAction(ActionEvent event) {
+    private void editDetailsAction(ActionEvent event) throws IOException {
+        Person selectedCustomer = null;
+        boolean isNew = true;
+        showDetailStage1(selectedCustomer, isNew);
+        
         try {
             Parent root = FXMLLoader.load(getClass().getResource("editDetails.fxml"));
             Scene scene = new Scene(root);
