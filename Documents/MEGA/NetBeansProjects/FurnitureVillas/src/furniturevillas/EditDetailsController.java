@@ -160,8 +160,8 @@ public class EditDetailsController implements Initializable {
             
         System.out.println("UPDATING A PERSON!!");
         try {
-            PreparedStatement p = conn.prepareStatement("Insert Into person set  customer=?, phone_No=?"
-                    + " ,address=?,item=?, quantities=? , cost=?,dates=?");
+            PreparedStatement p = conn.prepareStatement("Update person set customer=?, phone_No=?"
+                    + " ,address=?,item=?, quantities=? , cost=?,dates=? where customer=? and phone_No=?");
             System.out.println("INSERTING PERSON.....");
             
             p.setString(1, editNameID.getText());
