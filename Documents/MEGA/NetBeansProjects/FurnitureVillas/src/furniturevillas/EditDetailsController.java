@@ -158,7 +158,7 @@ public class EditDetailsController implements Initializable {
             Integer quantity=personDetails.getQuantity();
             Float cost=personDetails.getCost();
             
-        System.out.println("INSERTING A PERSON!!");
+        System.out.println("UPDATING A PERSON!!");
         try {
             PreparedStatement p = conn.prepareStatement("Insert Into person set  customer=?, phone_No=?"
                     + " ,address=?,item=?, quantities=? , cost=?,dates=?");
@@ -184,7 +184,7 @@ public class EditDetailsController implements Initializable {
             ,editAdressID.getText(),Integer.parseInt(editQuantityID.getText()),
             dtf.format(localDate),(Float.parseFloat(editQuantityID.getText())*tableCost*days));
         
-        System.out.println("INSERTING A TABLE!!");
+        System.out.println("UPDATING A TABLE!!");
         try {
             PreparedStatement t = conn.prepareStatement("Insert Into tables set  customer=?, phone_No=?"
                     + " ,address=?, quantities=?,dates=? , cost=?");
@@ -209,11 +209,11 @@ public class EditDetailsController implements Initializable {
             ,editAdressID.getText(),Integer.parseInt(editQuantityID.getText()),
              dtf.format(localDate),(Float.parseFloat(editQuantityID.getText())*chairCost*days));
                     
-        System.out.println("INSERTING A CHAIR!!");
+        System.out.println("UPDATING A CHAIR!!");
         try {
             PreparedStatement h = conn.prepareStatement("Insert Into chairs set  customer=?, phone_No=?"
                     + " ,address=?, quantities=? ,dates=?, cost=?");
-            System.out.println("INSERTING CHAIR.....");
+            System.out.println("UPDATING CHAIR.....");
             h.setString(1, editNameID.getText());
             h.setInt(2, Integer.valueOf(editPhoneID.getText()));
             h.setString(3, editAdressID.getText());
@@ -238,7 +238,7 @@ public class EditDetailsController implements Initializable {
             PreparedStatement c = conn.prepareStatement("Insert Into canopies set  customer=?, phone_No=?"
                     + " ,address=?, quantities=? ,dates=?, cost=?");
             
-            System.out.println("INSERTING CANOPY.....");
+            System.out.println("UPDATING CANOPY.....");
             
             c.setString(1, editNameID.getText());
             c.setInt(2, Integer.valueOf(editPhoneID.getText()));
