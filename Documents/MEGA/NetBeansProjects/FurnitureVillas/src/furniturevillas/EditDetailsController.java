@@ -74,6 +74,11 @@ public class EditDetailsController implements Initializable {
     float tableCost=40;
     float canopyCost=100;
     float cost;
+    private int myClientID;
+    int myCID;
+    
+    
+    
 
     /**
      * Initializes the controller class.
@@ -82,6 +87,7 @@ public class EditDetailsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         System.out.println("I WANT TO EDIT USER INFO NOW!!");
         editItemID.getItems().removeAll(editItemID.getItems());
         editItemID.getItems().addAll("CHAIRS", "TABLES", "CANOPIES");
@@ -106,7 +112,8 @@ public class EditDetailsController implements Initializable {
 
     @FXML
     private Person doneEditDetailsAction(ActionEvent event) {
-                int days=Integer.parseInt(editDurationField.getText());
+        //int days=Integer.parseInt(editDurationField.getText());
+        int days=Integer.parseInt(editDurationField.getText());
         
         System.out.println("STARTED ADDING USER INFO NOW!!");
         
@@ -265,17 +272,19 @@ public class EditDetailsController implements Initializable {
         System.out.println("On pass handle");
         thisStage=s;
     }
-    
-    public void showCustomerDetail(Person p,boolean isNew) {
+
+    public void showCustomerDetail(Person p,boolean isNew,int myCID) {
         System.out.println("On show customer details handle");
         this.personDetails = p;
         this.isNew = isNew;
+        this.myClientID = myCID;
         if (p != null) {
             editNameID.setText(p.getCustomer());
             editPhoneID.setText(p.getPhone_number().toString());
             editAdressID.setText(p.getAddress());
             editItemID.setValue(p.getItem());
             editQuantityID.setText(p.getQuantity().toString());
+            editDurationField.setText(p.getDate().toString());
             
             
         } else {
@@ -284,6 +293,7 @@ public class EditDetailsController implements Initializable {
             editAdressID.setText(" " );
             editItemID.setValue(" ");
             editQuantityID.setText(" ");
+            editDurationField.setText(" ");
         }
         System.out.println("DONE TAKING DETAILS OF THE CUSTOMER");
     }
@@ -303,15 +313,100 @@ public class EditDetailsController implements Initializable {
 
     @FXML
     private void buttonDoneEditing(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("details.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) DoneEditDetailBtn.getScene().getWindow();
-            stage.setScene(scene);
-        }
-        catch(IOException e) {
-            System.err.println(e.toString());
-        }
+        if(isNew==true)
+            saveAction();
+        else
+            updateAction(myClientID);
+        thisStage.close();
     }
+    
+        private Person updateAction(int _clientID) {
+            int days=Integer.parseInt(editDurationField.getText());
+        personDetails = new Person(editNameID.getText(), Integer.parseInt(editPhoneID.getText())
+            ,editAdressID.getText(),editItemID.getValue(),
+                    Integer.valueOf(editQuantityID.getText()), 
+                    Float.parseFloat(editQuantityID.getText())*cost*days,
+                    dtf.format(localDate));
+
+        if (isNew == false) {
+            java.sql.Connection conn = null;
+            System.out.println("Connecting to the Database");
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                conn = java.sql.DriverManager.getConnection(
+                        "jdbc:mysql://localhost/fedha?user=root&password=root");
+            } catch (Exception e) {
+                System.err.println(e);
+                System.exit(0);
+            }
+
+            try {
+                PreparedStatement p = conn.prepareStatement("Update person set customer=?, phone_No=?"
+                    + " ,address=?,item=?, quantities=? , cost=?,dates=? where person_ID=?");
+            System.out.println("INSERTING PERSON.....");
+            
+            p.setString(1, editNameID.getText());
+            p.setInt(2, Integer.valueOf(editPhoneID.getText()));
+            p.setString(3, editAdressID.getText());
+            p.setString(4, editItemID.getValue());
+            p.setInt(5, Integer.valueOf(editQuantityID.getText()));
+            p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
+            p.setString(7, dtf.format(localDate));
+            p.setInt(8, _clientID);
+            p.execute(); 
+            System.out.println(p);
+            } catch (SQLException e) {
+                System.err.println("Error " + e.toString());
+            }
+
+        }
+        return personDetails;
+    }
+        
+        private Person saveAction() {
+            int days=Integer.parseInt(editDurationField.getText());
+        personDetails = new Person(editNameID.getText(), Integer.parseInt(editPhoneID.getText())
+            ,editAdressID.getText(),editItemID.getValue(),
+                    Integer.valueOf(editQuantityID.getText()), 
+                    Float.parseFloat(editQuantityID.getText())*cost*days,
+                    dtf.format(localDate));
+
+        if (isNew == true) {
+            java.sql.Connection conn = null;
+            System.out.println("Connecting to the Database");
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                conn = java.sql.DriverManager.getConnection(
+                        "jdbc:mysql://localhost/fedha?user=root&password=root");
+            } catch (Exception e) {
+                System.err.println(e);
+                System.exit(0);
+            }
+
+            try {
+                PreparedStatement p;
+                PreparedStatement p2;
+                p = conn.prepareStatement("Insert Into person set  customer=?, phone_No=?"
+                    + " ,address=?,item=?, quantities=? , cost=?,dates=?");
+                p2 = conn.prepareStatement("delete from person where customer=? and phone_No =?");
+                p.setString(1, editNameID.getText());
+                p.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                p.setString(3, editAdressID.getText());
+                p.setString(4, editItemID.getValue());
+                p.setInt(5, Integer.valueOf(editQuantityID.getText()));
+                p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
+                p.setString(7, dtf.format(localDate));
+                p2.setString(1, editNameID.getText());
+                p2.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                p2.execute();
+                p.execute(); //use execute if no results expected back
+            } catch (SQLException e) {
+                System.err.println("Error " + e.toString());
+            }
+
+        }
+        return personDetails;
+    }
+
     
 }

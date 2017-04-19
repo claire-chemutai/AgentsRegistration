@@ -139,7 +139,37 @@ public class Person {
     public StringProperty dateProperty() {
         return date;
     }
+    private  IntegerProperty customerID ;
+    //= new SimpleIntegerProperty();
+
+    public int getCustomerID() {
+        return customerID.get();
+    }
+
+    public void setCustomerID(int value) {
+        customerID.set(value);
+    }
+
+    public IntegerProperty customerIDProperty() {
+        return customerID;
+    }
+    /*
+    private final IntegerProperty duration;
+    //= new SimpleIntegerProperty();
+
+    public int getDuration() {
+        return duration.get();
+    }
+
+    public void setDuration(int value) {
+        duration.set(value);
+    }
+
+    public IntegerProperty durationProperty() {
+        return duration;
+    }
     
+    */
 
     @Override
     public String toString() {
@@ -154,6 +184,24 @@ public class Person {
     public Person() {
         this(null,0,null,null,0,0,null);
     }
+    
+    
+
+    public Person(String customer,int phone_number, String address,
+            String item,int quantity,float cost,String date, int customerID) {
+        this.customer = new SimpleStringProperty(customer);
+        this.phone_number= new SimpleIntegerProperty(phone_number);
+        this.address = new SimpleStringProperty (address);
+        this.item = new SimpleStringProperty(item);
+        this.quantity= new SimpleIntegerProperty(quantity);
+        this.cost= new SimpleFloatProperty(cost);
+        this.date = new SimpleStringProperty(date);
+        this.customerID = new SimpleIntegerProperty(customerID);
+    
+    
+    }
+    
+    
 
    
     

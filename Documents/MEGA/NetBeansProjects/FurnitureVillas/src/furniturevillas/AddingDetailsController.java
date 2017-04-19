@@ -18,7 +18,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -325,65 +324,4 @@ public class AddingDetailsController implements Initializable {
 
 }
 
-     /*
-    @FXML
-    private void DoneAddDetailAction(ActionEvent event) {
-        
-        System.out.println("DONE TAKING DETAILS OF THE CUSTOMER");
-        LocalDate dt=addDateID.getValue();
-        //String Transaction_time = null;
-        //String Teller_name = null;
-        if (addItemID.getValue().equalsIgnoreCase("TABLES")){
-            customerDetails.addCust(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),addItemID.getValue(),Integer.parseInt(addQuantityID.getText()),
-            (Float.parseFloat(addQuantityID.getText())*40),dt.toString());
-        }
-        else if (addItemID.getValue().equalsIgnoreCase("CHAIRS")){
-            customerDetails.addCust(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),addItemID.getValue(),Integer.parseInt(addQuantityID.getText()),
-            (Float.parseFloat(addQuantityID.getText())*25),dt.toString());
-        }
-        else if (addItemID.getValue().equalsIgnoreCase("CANOPIES")){
-            customerDetails.addCust(addNameID.getText(), Integer.parseInt(addPhoneID.getText())
-            ,addAddressID.getText(),addItemID.getValue(),Integer.parseInt(addQuantityID.getText()),
-            (Float.parseFloat(addQuantityID.getText())*35),dt.toString());
-        }
-        else System.out.println("No item Selected");
-        
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-	} catch (ClassNotFoundException e) {
-            System.out.println("Where is your MySQL JDBC Driver?");
-            return;
-	}
-	System.out.println("MySQL JDBC Driver Registered!");
-	Connection connection = null;
-	try {
-            connection = (Connection) DriverManager
-		.getConnection("jdbc:mysql://localhost/furniture?user=root&password=root");
-	} catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
-           //e.printStackTrace();
-            return;
-	}
-	if (connection != null) {
-            System.out.println("You made it, take control your database now!");
-	}
-        else {
-            System.out.println("Failed to make connection!");
-	}
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("details.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) DoneAddDetailBtn.getScene().getWindow();
-            stage.setScene(scene);
-        }
-        catch(IOException e) {
-            System.err.println(e.toString());
-            
-        }
-      
-       
-        
-    }
-    */
+  
