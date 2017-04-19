@@ -43,7 +43,7 @@
         
 
         private Label lblDetail;
-        private Stage detailStage = null;
+        private Stage detailStage;
         ObservableList<Person> data;
         //=FXCollections.observableArrayList();
 
@@ -59,7 +59,7 @@
         private TableView<CanopiesClass> canopiesTable;
         
         @FXML
-        private TableView<Person> customerDetailsTable;
+        TableView<Person> customerDetailsTable;
         @FXML
         private TextField searchDetailField;
         @FXML
@@ -339,29 +339,39 @@
             this.isNew = true;
             this.CID = -1;
             int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
-
             if (selectedIndex >= 0) {
                 selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
                 CID = selectedCustomer.getCustomerID(); 
             }     
             
             if (detailStage == null) {
-            FXMLLoader loader = new FXMLLoader();
-            Parent detailPane = null;
+                 FXMLLoader loader = new FXMLLoader();
+                 Parent detailPane = null;
             try {
                 loader.setLocation(getClass().getResource("editDetails.fxml"));
                 detailPane = loader.load();
-            } catch (IOException ioe) {
+                //Scene scene = new Scene(root);
+                //Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+                //stage.setScene(scene);
+            }
+            catch (IOException ioe) {
                 ioe.printStackTrace();
             }
+            
             Scene scene = new Scene(detailPane);
-            detailStage = new Stage();
+            detailStage= new Stage();
             detailStage.setTitle("Customer  Details");
             detailStage.initModality(Modality.APPLICATION_MODAL);
             detailStage.setScene(scene);
             editCustomerController = loader.getController();
             editCustomerController.passHandleOnStage(detailStage);
         }
+            
+            
+            
+        
+        
+        
         editCustomerController.showCustomerDetail(selectedCustomer, isNew,CID);
         detailStage.showAndWait();
         }

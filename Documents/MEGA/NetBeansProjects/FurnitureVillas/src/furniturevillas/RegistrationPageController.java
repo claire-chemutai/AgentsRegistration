@@ -18,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -146,7 +148,8 @@ public class RegistrationPageController implements Initializable {
                                 
                             
                         } else {
-                            registerLabel.setText("Login failure!!Please Register");
+                            logInDetailsWrong.setText("Login failure!!Please Register");
+                            logInDetailsWrong.setStyle("-fx-text-fill:red;");
                         }
                     } catch (final IOException | SQLException e) {
                     }
@@ -205,6 +208,7 @@ public class RegistrationPageController implements Initializable {
                             } else {
                                 
                                 registerLabel.setText("Password do not match!!");
+                                registerLabel.setStyle("-fx-text-fill:red;");
                             }
                             
                         } catch (final Exception e) {
