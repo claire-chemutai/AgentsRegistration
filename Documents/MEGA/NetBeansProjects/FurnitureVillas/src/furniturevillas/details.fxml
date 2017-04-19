@@ -17,7 +17,7 @@
    <children>
       <TabPane layoutX="22.0" layoutY="66.0" prefHeight="306.0" prefWidth="676.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="CUSTOMER DETAILS">
+            <Tab text="RECENT RECORDS">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="376.0">
                      <children>
@@ -36,7 +36,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab text="CHAIRS RENTED">
+          <Tab text="CHAIRS TRANSACTIONS">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -54,7 +54,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="TABLES RENTED">
+          <Tab text="TABLES TRANSACTIONS">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="397.0">
                      <children>
@@ -72,7 +72,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="CANOPIES RENTED">
+            <Tab text="CANOPIES TRANSACTIONS">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -90,7 +90,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="RECENT RECORDS">
+            <Tab text="TO BE REMOVED">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -120,16 +120,17 @@
          <menus>
             <Menu mnemonicParsing="false" text="HOME">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Home" />
+                  <MenuItem fx:id="closeMenuBar" mnemonicParsing="false" onAction="#closePage" text="Close" />
+                  <MenuItem fx:id="goHomeID" mnemonicParsing="false" onAction="#goHomeAction" text="Home" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Account">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Log Out" />
+                  <MenuItem fx:id="logOutID" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
+      <Button fx:id="viewTransactionsID" layoutX="472.0" layoutY="387.0" mnemonicParsing="false" onAction="#viewTransactionsActions" prefHeight="25.0" prefWidth="94.0" text="VIEW" />
    </children>
 </AnchorPane>

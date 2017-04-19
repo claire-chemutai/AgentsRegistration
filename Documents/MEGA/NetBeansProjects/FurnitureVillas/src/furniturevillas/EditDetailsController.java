@@ -186,8 +186,8 @@ public class EditDetailsController implements Initializable {
         
         System.out.println("UPDATING A TABLE!!");
         try {
-            PreparedStatement t = conn.prepareStatement("Insert Into tables set  customer=?, phone_No=?"
-                    + " ,address=?, quantities=?,dates=? , cost=?");
+            PreparedStatement t = conn.prepareStatement("Update tables set  customer=?, phone_No=?"
+                    + " ,address=?, quantities=?,dates=? , cost=? where customer=?, phone_No=?");
             System.out.println("INSERTING TABLE.....");
             t.setString(1, editNameID.getText());
             t.setInt(2, Integer.valueOf(editPhoneID.getText()));
@@ -211,8 +211,8 @@ public class EditDetailsController implements Initializable {
                     
         System.out.println("UPDATING A CHAIR!!");
         try {
-            PreparedStatement h = conn.prepareStatement("Insert Into chairs set  customer=?, phone_No=?"
-                    + " ,address=?, quantities=? ,dates=?, cost=?");
+            PreparedStatement h = conn.prepareStatement("Update chairs set  customer=?, phone_No=?"
+                    + " ,address=?, quantities=? ,dates=?, cost=? where customer=?, phone_No=?");
             System.out.println("UPDATING CHAIR.....");
             h.setString(1, editNameID.getText());
             h.setInt(2, Integer.valueOf(editPhoneID.getText()));
@@ -235,8 +235,8 @@ public class EditDetailsController implements Initializable {
              dtf.format(localDate),(Float.parseFloat(editQuantityID.getText())*canopyCost));
         System.out.println("INSERTING A CANOPY!!");
         try {
-            PreparedStatement c = conn.prepareStatement("Insert Into canopies set  customer=?, phone_No=?"
-                    + " ,address=?, quantities=? ,dates=?, cost=?");
+            PreparedStatement c = conn.prepareStatement("Update canopies set  customer=?, phone_No=?"
+                    + " ,address=?, quantities=? ,dates=?, cost=? where customer=?, phone_No=?");
             
             System.out.println("UPDATING CANOPY.....");
             

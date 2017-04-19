@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -23,12 +24,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -126,6 +125,14 @@ public class DetailsController implements Initializable {
     private TableColumn<TableClass, Float> costTableCol;
     @FXML
     private TableColumn<CanopiesClass, Float> costCanopiesCol;
+    @FXML
+    private MenuItem closeMenuBar;
+    @FXML
+    private MenuItem goHomeID;
+    @FXML
+    private MenuItem logOutID;
+    @FXML
+    private Button viewTransactionsID;
 
     
     
@@ -136,21 +143,7 @@ public class DetailsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         data = FXCollections.observableArrayList();
         System.out.println("Getting the customer details into table and database");
-        /*
-        java.sql.Connection conn = null;
-        
-        
-        System.out.println("This program demos DB connectivity");
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/furniture?user=root&password=root");
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println(" ON CUSTOMER DETAILS");
-            //System.exit(0);
-        }*/
-        
+     
                 try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             
@@ -321,9 +314,16 @@ public class DetailsController implements Initializable {
 
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
+                //int lowerFilter = Integer.parseInt(newValue);
                 // Does not match.
+//                 if ( record.getCustomer().toLowerCase().contains(lowerCaseFilter)) {
+//                    return record.getCustomer().toLowerCase().contains(lowerCaseFilter);
+//                }
+//                 else if ( record.getPhone_number()==lowerFilter) {
+//                    return record.getPhone_number()==lowerFilter;
+//                }
 
-                return record.getCustomer().toLowerCase().contains(lowerCaseFilter) ; 
+                return  record.getCustomer().toLowerCase().contains(lowerCaseFilter); 
             });
         });
         // 3. Wrap the FilteredList in a SortedList. 
@@ -402,6 +402,49 @@ public class DetailsController implements Initializable {
         }
         catch(IOException e) {
             System.err.println(e.toString());
+        }
+    }
+
+    @FXML
+    private void closePage(ActionEvent event) {
+        Platform.exit();
+    }
+
+    @FXML
+    private void goHomeAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+            stage.setScene(scene);
+        }
+        catch(IOException e) {
+            System.err.println(e.toString());
+        }
+    }
+
+    @FXML
+    private void logOutAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("registrationPage.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+            stage.setScene(scene);
+        }
+        catch(IOException e) {
+            System.err.println(e.toString());
+        }
+    }
+
+    @FXML
+    private void viewTransactionsActions(ActionEvent event) {
+        Person selectedCustomer = null;
+        int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
+            //add additional confirmation before deletion
+            
+            
         }
     }
     
