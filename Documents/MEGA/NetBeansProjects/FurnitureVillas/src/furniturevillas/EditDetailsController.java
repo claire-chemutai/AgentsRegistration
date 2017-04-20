@@ -152,24 +152,84 @@ public class EditDetailsController implements Initializable {
                 System.err.println(e);
                 System.exit(0);
             }
-
-            try {
+             try {
+            if (editItemID.getValue().equals("TABLES")){
                 PreparedStatement p = conn.prepareStatement("Update person set customer=?, phone_No=?"
                     + " ,address=?,item=?, quantities=? , cost=?,dates=? where person_ID=?");
-            
-            p.setString(1, editNameID.getText());
-            p.setInt(2, Integer.valueOf(editPhoneID.getText()));
-            p.setString(3, editAdressID.getText());
-            p.setString(4, editItemID.getValue());
-            p.setInt(5, Integer.valueOf(editQuantityID.getText()));
-            p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
-            p.setString(7, dtf.format(localDate));
-            p.setInt(8, customer_ID);
-            p.execute(); 
-            System.out.println(p);
-            } catch (SQLException e) {
-                System.err.println("Error " + e.toString());
+                    p.setString(1, editNameID.getText());
+                    p.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p.setString(3, editAdressID.getText());
+                    p.setString(4, editItemID.getValue());
+                    p.setInt(5, Integer.valueOf(editQuantityID.getText()));
+                    p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
+                    p.setString(7, dtf.format(localDate));
+                    p.setInt(8, customer_ID);
+                    p.execute();
+                PreparedStatement p1 = conn.prepareStatement("Update tables set customer=?, phone_No=?"
+                    + " ,address=?, quantities=? , cost=?,dates=? where person_ID=?");
+                    p1.setString(1, editNameID.getText());
+                    p1.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p1.setString(3, editAdressID.getText());
+                    p1.setInt(4, Integer.valueOf(editQuantityID.getText()));
+                    p1.setFloat(5, (Float.parseFloat(editQuantityID.getText())*40));
+                    p1.setString(6, dtf.format(localDate));
+                    p1.setInt(7, customer_ID);
+                    p1.execute(); 
+                    
+                
+            } else if (editItemID.getValue().equals("CHAIRS")){
+                PreparedStatement p = conn.prepareStatement("Update person set customer=?, phone_No=?"
+                    + " ,address=?,item=?, quantities=? , cost=?,dates=? where person_ID=?");
+                    p.setString(1, editNameID.getText());
+                    p.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p.setString(3, editAdressID.getText());
+                    p.setString(4, editItemID.getValue());
+                    p.setInt(5, Integer.valueOf(editQuantityID.getText()));
+                    p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
+                    p.setString(7, dtf.format(localDate));
+                    p.setInt(8, customer_ID);
+                    p.execute();
+                PreparedStatement p1 = conn.prepareStatement("Update chairs set customer=?, phone_No=?"
+                    + " ,address=?, quantities=? , cost=?,dates=? where person_ID=?");
+                    p1.setString(1, editNameID.getText());
+                    p1.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p1.setString(3, editAdressID.getText());
+                    p1.setInt(4, Integer.valueOf(editQuantityID.getText()));
+                    p1.setFloat(5, (Float.parseFloat(editQuantityID.getText())*40));
+                    p1.setString(6, dtf.format(localDate));
+                    p1.setInt(7, customer_ID);
+                    p1.execute(); 
+                    
+            } 
+            else{
+                PreparedStatement p = conn.prepareStatement("Update person set customer=?, phone_No=?"
+                    + " ,address=?,item=?, quantities=? , cost=?,dates=? where person_ID=?");
+                    p.setString(1, editNameID.getText());
+                    p.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p.setString(3, editAdressID.getText());
+                    p.setString(4, editItemID.getValue());
+                    p.setInt(5, Integer.valueOf(editQuantityID.getText()));
+                    p.setFloat(6, (Float.parseFloat(editQuantityID.getText())*40));
+                    p.setString(7, dtf.format(localDate));
+                    p.setInt(8, customer_ID);
+                    p.execute();
+                PreparedStatement p1 = conn.prepareStatement("Update canopies set customer=?, phone_No=?"
+                    + " ,address=?, quantities=? , cost=?,dates=? where person_ID=?");
+                    p1.setString(1, editNameID.getText());
+                    p1.setInt(2, Integer.valueOf(editPhoneID.getText()));
+                    p1.setString(3, editAdressID.getText());
+                    p1.setInt(4, Integer.valueOf(editQuantityID.getText()));
+                    p1.setFloat(5, (Float.parseFloat(editQuantityID.getText())*40));
+                    p1.setString(6, dtf.format(localDate));
+                    p1.setInt(7, customer_ID);
+                    p1.execute(); 
             }
+            
+                    } catch (SQLException e) {
+                        System.err.println("Error " + e.toString());
+                    }
+             
+                
 
     }
 

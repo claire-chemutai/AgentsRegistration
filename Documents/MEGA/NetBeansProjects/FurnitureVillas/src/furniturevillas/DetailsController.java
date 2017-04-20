@@ -306,6 +306,8 @@ import java.io.FileWriter;
             SortedList<Person> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(customerDetailsTable.comparatorProperty());
             customerDetailsTable.setItems(sortedData);
+            
+            
 
         }     
         /**
