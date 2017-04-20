@@ -41,14 +41,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="chairsTable" prefHeight="280.0" prefWidth="676.0">
+                        <TableView fx:id="chairsTable" prefHeight="280.0" prefWidth="679.0">
                            <columns>
                               <TableColumn fx:id="customerNameChairsCol" prefWidth="115.0" text="Name" />
-                              <TableColumn fx:id="phoneNoChairsCol" prefWidth="117.0" text="Phone Number" />
-                              <TableColumn fx:id="addressChairsCol" prefWidth="123.0" text="Address" />
-                              <TableColumn fx:id="quantityChairsCol" prefWidth="79.0" text="Quantity" />
-                              <TableColumn fx:id="dateChairsCol" prefWidth="138.0" text="Date" />
-                              <TableColumn fx:id="costChairsCol" prefWidth="103.0" text="Cost" />
+                              <TableColumn fx:id="phoneNoChairsCol" prefWidth="127.0" text="Phone Number" />
+                              <TableColumn fx:id="addressChairsCol" prefWidth="122.0" text="Address" />
+                              <TableColumn fx:id="quantityChairsCol" prefWidth="95.0" text="Quantity" />
+                              <TableColumn fx:id="dateChairsCol" prefWidth="133.0" text="Date" />
+                              <TableColumn fx:id="costChairsCol" prefWidth="83.0" text="Cost" />
                            </columns>
                         </TableView>
                      </children>
@@ -59,7 +59,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="397.0">
                      <children>
-                        <TableView fx:id="tablesTable" layoutX="-6.0" prefHeight="294.0" prefWidth="683.0">
+                        <TableView fx:id="tablesTable" prefHeight="294.0" prefWidth="679.0">
                           <columns>
                             <TableColumn fx:id="customerNameTablesCol" prefWidth="128.0" text="Name" />
                               <TableColumn fx:id="phoneNoTablesCol" prefWidth="125.0" text="Phone Number" />
@@ -77,31 +77,15 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="canopiesTable" layoutY="-1.0" prefHeight="280.0" prefWidth="676.0">
+                        <TableView fx:id="canopiesTable" layoutY="-1.0" prefHeight="280.0" prefWidth="679.0">
                            <columns>
-                              <TableColumn fx:id="customerNameCanopiesCol" prefWidth="129.0" text="First Name" />
-                              <TableColumn fx:id="phoneNoCanopiesCol" prefWidth="133.0" text="Phone Number" />
-                              <TableColumn fx:id="addressCanopiesCol" prefWidth="118.0" text="Address" />
+                              <TableColumn fx:id="customerNameCanopiesCol" prefWidth="115.0" text="Name" />
+                              <TableColumn fx:id="phoneNoCanopiesCol" prefWidth="138.0" text="Phone Number" />
+                              <TableColumn fx:id="addressCanopiesCol" prefWidth="127.0" text="Address" />
                               <TableColumn fx:id="quantityCanopiesCol" prefWidth="81.0" text="Quantity" />
                               <TableColumn fx:id="dateCanopiesCol" prefWidth="121.0" text="Date" />
                               <TableColumn fx:id="costCanopiesCol" prefWidth="93.0" text="Cost" />
                            </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="TO BE REMOVED">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="recentRecordsTable" prefHeight="281.0" prefWidth="653.0">
-                          <columns>
-                            <TableColumn fx:id="nameRecentCol" prefWidth="121.0" text="Name" />
-                            <TableColumn fx:id="itemRecentCol" prefWidth="103.0" text="Item" />
-                              <TableColumn fx:id="quantityRecentCol" prefWidth="103.0" text="Quantity" />
-                              <TableColumn fx:id="dateRecentCol" prefWidth="120.0" text="Date" />
-                          </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
@@ -132,6 +116,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="viewTransactionsID" layoutX="472.0" layoutY="387.0" mnemonicParsing="false" onAction="#viewTransactionsActions" prefHeight="25.0" prefWidth="94.0" text="VIEW" />
+      <Button fx:id="viewTransactionsID" layoutX="472.0" layoutY="387.0" mnemonicParsing="false" onAction="#viewTransactionsActions" prefHeight="25.0" prefWidth="94.0" text="PRINT TO FILE" />
    </children>
 </AnchorPane>

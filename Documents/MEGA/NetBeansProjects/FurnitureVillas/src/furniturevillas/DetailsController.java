@@ -286,17 +286,20 @@ import java.io.FileWriter;
             FilteredList<Person> filteredData = new FilteredList<>(data, p -> true);
 
             searchDetailField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredData.setPredicate(record -> {
+                filteredData.setPredicate((Person record) -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                   // if (record.getCustomer().toLowerCase().contains(lowerCaseFilter)) {
-                       // return true;
-                    //}else if (record.getPhone_number().contains(lowerCaseFilter)) {
-                        return record.getCustomer().toLowerCase().contains(lowerCaseFilter);
-                    //}
-                    //return true; 
+
+                     
+                    if (record.getCustomer().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    if (!record.getPhone_number().toString().contains(newValue)) {
+                        return false;
+                    }
+                    return true; 
                 });
             });
 
