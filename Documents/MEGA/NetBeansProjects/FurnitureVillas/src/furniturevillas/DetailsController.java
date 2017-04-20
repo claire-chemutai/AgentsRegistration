@@ -5,6 +5,9 @@
      */
     package furniturevillas;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
     import java.io.IOException;
     import java.net.URL;
     import java.sql.Connection;
@@ -199,7 +202,9 @@
                         customerDetailsTable.setItems(data);
 
                         System.out.println("ADDED PERSON");
+                     
                     }
+                    
 
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
@@ -272,6 +277,7 @@
                         System.out.println("ADDED CANOPY");
                     }
                 }
+                
 
                 connection.close();
             } catch (SQLException ex) {
@@ -285,7 +291,12 @@
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    return  record.getCustomer().toLowerCase().contains(lowerCaseFilter); 
+                   // if (record.getCustomer().toLowerCase().contains(lowerCaseFilter)) {
+                       // return true;
+                    //}else if (record.getPhone_number().contains(lowerCaseFilter)) {
+                        return record.getCustomer().toLowerCase().contains(lowerCaseFilter);
+                    //}
+                    //return true; 
                 });
             });
 
@@ -350,9 +361,6 @@
             try {
                 loader.setLocation(getClass().getResource("editDetails.fxml"));
                 detailPane = loader.load();
-                //Scene scene = new Scene(root);
-                //Stage stage = (Stage) addDetailBtn.getScene().getWindow();
-                //stage.setScene(scene);
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();
@@ -366,11 +374,6 @@
             editCustomerController = loader.getController();
             editCustomerController.passHandleOnStage(detailStage);
         }
-            
-            
-            
-        
-        
         
         editCustomerController.showCustomerDetail(selectedCustomer, isNew,CID);
         detailStage.showAndWait();
@@ -410,12 +413,55 @@
         }
 
         @FXML
-        private void viewTransactionsActions(ActionEvent event) {
-            Person selectedCustomer = null;
+        private void viewTransactionsActions(ActionEvent event) throws IOException {
+           this.selectedCustomer = null;
+            this.isNew = true;
+            
             int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
             if (selectedIndex >= 0) {
                 selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
+                
+            }  
+            try{
+            File file = new File("CUSTOMERSDETAIL.txt");
+               try (BufferedWriter out = new BufferedWriter(new FileWriter(file, true))) {
+                   out.write(selectedCustomer.getCustomer()+"\t");
+                   
+                   out.write(selectedCustomer.getPhone_number().toString()+"\t");
+                  
+                   out.write(selectedCustomer.getAddress()+"\t");
+                   
+                   out.write(selectedCustomer.getItem()+"\t");
+                   
+                   out.write(selectedCustomer.getQuantity().toString()+"\t");
+                   
+                   out.write(selectedCustomer.getDate().toString()+"\t");
+                   out.newLine();
+               }
+            } catch (IOException e) {
             }
         }
+        
+       
 
     }
+
+
+
+
+ /*
+        public void writeToFile(ObservableList<Person> list, String path) {
+            BufferedWriter out = null;
+            try {
+                    File file = new File(path);
+                    out = new BufferedWriter(new FileWriter(file, true));
+                    for (Object s : list) {
+                            out.write((String)s);
+                            out.newLine();
+
+                    }
+                    out.close();
+            } catch (IOException e) {
+            }
+    }
+        */
