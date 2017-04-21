@@ -148,11 +148,7 @@ public class RegistrationPageController implements Initializable {
                                 stage.setScene(scene);
                         }
                              
-                        //} else {
-                           // logInDetailsWrong.setText("Login failure!!Please Register");
-                           // logInDetailsWrong.setStyle("-fx-text-fill:red;");
-                            
-                        //}
+                        
                     } catch (final IOException | SQLException e) {
                         System.out.println(e.toString());
                     }

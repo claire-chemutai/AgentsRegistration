@@ -3,9 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -41,20 +38,5 @@
             <Button fx:id="doneAddBtn" layoutX="292.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonDoneAdding" text="DONE" />
             <TextField fx:id="addDurationField" layoutX="119.0" layoutY="213.0" />
          </children></Pane>
-      <MenuBar layoutX="650.0" layoutY="4.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="HOME">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Home" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Account">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Log Out" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
    </children>
 </AnchorPane>
