@@ -13,7 +13,7 @@
     import javafx.beans.property.StringProperty;
 
     /**
-     *
+     * chairs class
      * @author Claire Chemutai Langat
      */
     public class ChairsClass {

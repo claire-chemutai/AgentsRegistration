@@ -15,7 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
+ * person controller
  * @author Claire Chemutai
  */
 

@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * mainPagecontroller
  * @author Claire Chemutai Langat
  */
 public class mainPageController implements Initializable {

@@ -18,8 +18,11 @@
     import javafx.fxml.Initializable;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
+import javafx.scene.control.Alert;
     import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
     import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
     import javafx.scene.control.TextField;
     import javafx.scene.layout.AnchorPane;
     import javafx.scene.layout.Pane;
@@ -73,6 +76,8 @@
         float tableCost=40;
         float canopyCost=100;
         float cost;
+    @FXML
+    private Label wrongPhoneNumber;
 
 
 
@@ -115,7 +120,7 @@
         @FXML
         public Person DoneAddDetailAction(ActionEvent event) {
             int days=Integer.parseInt(addDurationField.getText());
-
+            
             System.out.println("STARTED ADDING USER INFO NOW!!");
 
 
@@ -128,6 +133,8 @@
                 System.err.println(e);
                 System.exit(0);
             }
+          
+           
 
 
 

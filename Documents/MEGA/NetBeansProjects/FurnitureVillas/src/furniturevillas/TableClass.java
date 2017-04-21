@@ -13,64 +13,48 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
+ * table class
  * @author Claire Chemutai langat
  */
 public class TableClass {
 
     private final StringProperty customerNameTablesCol;
     
-    /**
-    * gets the customer name from the table
-    */
     
     public String getCustomerNameTablesCol() {
         return customerNameTablesCol.get();
     }
     
-    /**
-    * gets the customer name from the table
-    */
+    
 
     public void setCustomerNameTablesCol(String value) {
         customerNameTablesCol.set(value);
     }
-    
-    /**
-    * gets the customer name from the table
-    */
+   
 
     public StringProperty customerNameTablesColProperty() {
         return customerNameTablesCol;
     }
     private final IntegerProperty phoneNoTablesCol;
     
-    /**
-    * gets the customer name from the table
-    */
+    
     public int getPhoneNoTablesCol() {
         return phoneNoTablesCol.get();
     }
     
-    /**
-    * gets the customer name from the table
-    */
+    
 
     public void setPhoneNoTablesCol(int value) {
         phoneNoTablesCol.set(value);
     }
     
-    /**
-    * gets the customer name from the table
-    */
+    
 
     public IntegerProperty phoneNoTablesColProperty() {
         return phoneNoTablesCol;
     }
     
-    /**
-    * gets the customer name from the table
-    */
+   
 
     private final StringProperty addressTableCol;
    
@@ -79,25 +63,19 @@ public class TableClass {
         return addressTableCol.get();
     }
     
-    /**
-    * gets the customer name from the table
-    */
+   
 
     public void setAddressTableCol(String value) {
         addressTableCol.set(value);
     }
     
-    /**
-    * gets the customer name from the table
-    */
+    
 
     public StringProperty addressTableColProperty() {
         return addressTableCol;
     }
     
-    /**
-    * gets the customer name from the table
-    */
+    
     private final IntegerProperty quantityTableCol ;
            
 
@@ -105,25 +83,18 @@ public class TableClass {
         return quantityTableCol.get();
     }
     
-    /**
-    * gets the customer name from the table
-    */
+   
 
     public void setQuantityTableCol(int value) {
         quantityTableCol.set(value);
     }
     
-    /**
-    * gets the customer name from the table
-    */
+   
 
     public IntegerProperty quantityTableColProperty() {
         return quantityTableCol;
     }
     
-    /**
-    * gets the customer name from the table
-    */
     
     private final StringProperty dateTableCol;
    

@@ -34,7 +34,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="editDurationField" layoutX="118.0" layoutY="213.0" />
+            <TextField fx:id="editDurationField" layoutX="118.0" layoutY="213.0" promptText="0" />
             <Button fx:id="doneEditBtn" layoutX="276.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonDoneEditing" text="DONE" />
             <ComboBox fx:id="editItemID" layoutX="117.0" layoutY="141.0" prefWidth="150.0" />
          </children>

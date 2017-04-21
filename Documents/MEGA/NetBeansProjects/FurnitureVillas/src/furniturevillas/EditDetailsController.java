@@ -27,9 +27,9 @@
     import javafx.stage.Stage;
 
     /**
-     * FXML Controller class
+     * EditDetailsController class
      *
-     * @author study
+     * @author Claire Chemutai Langat
      */
     public class EditDetailsController implements Initializable {
 

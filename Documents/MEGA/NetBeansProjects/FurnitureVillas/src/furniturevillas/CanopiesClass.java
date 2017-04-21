@@ -13,7 +13,7 @@
     import javafx.beans.property.StringProperty;
 
     /**
-     *
+     * Canopies class
      * @author Claire Chemutai Langat
      */
     public class CanopiesClass {

@@ -27,16 +27,17 @@
             <TextField fx:id="addPhoneID" layoutX="118.0" layoutY="71.0" />
             <TextField fx:id="addAddressID" layoutX="118.0" layoutY="106.0" />
             <TextField fx:id="addQuantityID" layoutX="118.0" layoutY="180.0" />
-            <Button fx:id="DoneAddDetailBtn" layoutX="118.0" layoutY="255.0" mnemonicParsing="false" onAction="#DoneAddDetailAction" prefHeight="25.0" prefWidth="59.0" text="ADD" />
-            <Button fx:id="cancelAddDetailBtn" layoutX="205.0" layoutY="255.0" mnemonicParsing="false" onAction="#cancelAddDetailAction" text="CANCEL" />
+            <Button fx:id="DoneAddDetailBtn" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" onAction="#DoneAddDetailAction" prefHeight="25.0" prefWidth="59.0" text="ADD" />
+            <Button fx:id="cancelAddDetailBtn" layoutX="207.0" layoutY="268.0" mnemonicParsing="false" onAction="#cancelAddDetailAction" text="CANCEL" />
             <Label layoutX="118.0" layoutY="6.0" prefHeight="17.0" prefWidth="149.0" text="ADD DETAILS" underline="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
             <ComboBox fx:id="addItemID" layoutX="118.0" layoutY="141.0" prefWidth="150.0" />
-            <Button fx:id="doneAddBtn" layoutX="292.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonDoneAdding" text="DONE" />
+            <Button fx:id="doneAddBtn" layoutX="290.0" layoutY="268.0" mnemonicParsing="false" onAction="#buttonDoneAdding" text="DONE" />
             <TextField fx:id="addDurationField" layoutX="119.0" layoutY="213.0" />
+            <Label fx:id="wrongPhoneNumber" layoutX="119.0" layoutY="245.0" prefHeight="17.0" prefWidth="187.0" />
          </children></Pane>
    </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
+ * register user controller
  * @author Claire Chemutai
  */
 

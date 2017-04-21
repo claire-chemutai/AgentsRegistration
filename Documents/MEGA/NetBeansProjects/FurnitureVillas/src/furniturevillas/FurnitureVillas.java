@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * furniture villas class
  * @author Claire Chemutai
  */
 public class FurnitureVillas extends Application {
