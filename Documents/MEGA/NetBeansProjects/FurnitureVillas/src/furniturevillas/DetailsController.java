@@ -309,6 +309,8 @@ import javafx.scene.control.Alert;
                    out.write(selectedCustomer.getQuantity().toString()+"\t");
                    
                    out.write(selectedCustomer.getDate().toString()+"\t");
+                   
+                   out.write(selectedCustomer.getQuantity()*35+"\t");
                    out.newLine();
                }
             } catch (IOException e) {
@@ -321,7 +323,7 @@ import javafx.scene.control.Alert;
          */
         public void refresh(){
             
-                        data = FXCollections.observableArrayList();
+            data = FXCollections.observableArrayList();
             System.out.println("Getting the customer details into table and database");
 
                     try{
@@ -499,6 +501,9 @@ import javafx.scene.control.Alert;
 
     @FXML
     private void refreshAction(ActionEvent event) {
+        chairsTable.getItems().clear();
+        tablesTable.getItems().clear();
+        canopiesTable.getItems().clear();
         refresh();
     }
         
