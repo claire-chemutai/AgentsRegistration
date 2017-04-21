@@ -283,6 +283,8 @@ import java.io.FileWriter;
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
+            
+            System.out.println("START SEARCHING");
             FilteredList<Person> filteredData = new FilteredList<>(data, p -> true);
 
             searchDetailField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -302,11 +304,11 @@ import java.io.FileWriter;
                     return true; 
                 });
             });
-
+            System.out.println("DONE SEARCHING");
             SortedList<Person> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(customerDetailsTable.comparatorProperty());
             customerDetailsTable.setItems(sortedData);
-            
+            System.out.println("FINISHED SEARCHING");
             
 
         }     

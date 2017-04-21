@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -145,17 +146,32 @@ public class RegistrationPageController implements Initializable {
                                 Scene scene = new Scene(root);
                                 Stage stage = (Stage) signinBtn.getScene().getWindow();
                                 stage.setScene(scene);
-                                
-                            
-                        } else {
-                            logInDetailsWrong.setText("Login failure!!Please Register");
-                            logInDetailsWrong.setStyle("-fx-text-fill:red;");
                         }
+                             
+                        //} else {
+                           // logInDetailsWrong.setText("Login failure!!Please Register");
+                           // logInDetailsWrong.setStyle("-fx-text-fill:red;");
+                            
+                        //}
                     } catch (final IOException | SQLException e) {
+                        System.out.println(e.toString());
                     }
                     
-                }   }
-        rs.close();
+                } 
+                rs.close();
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            alert.setTitle("Message Here...");
+                            alert.setHeaderText("Login failure!!Please Register ");
+                            alert.setContentText(" ");
+                            alert.showAndWait().ifPresent(m -> {
+                            if (m == ButtonType.OK) {
+                             System.out.println("Pressed OK.");
+                                }
+                            }); 
+            }
+        
+                            
+                            
         //ps.close();
         
         } catch (final SQLException e) {
@@ -206,6 +222,9 @@ public class RegistrationPageController implements Initializable {
                                 registerLabel.setText("Registration succesfull, Sign in now!!");
                                 
                             } else {
+                                
+                               
+				
                                 
                                 registerLabel.setText("Password do not match!!");
                                 registerLabel.setStyle("-fx-text-fill:red;");
