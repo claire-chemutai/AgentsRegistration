@@ -25,6 +25,7 @@ import java.io.FileWriter;
     import javafx.fxml.Initializable;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
+import javafx.scene.control.Alert;
     import javafx.scene.control.Button;
     import javafx.scene.control.Label;
     import javafx.scene.control.MenuItem;
@@ -35,9 +36,9 @@ import java.io.FileWriter;
     import javafx.stage.Stage;
 
     /**
-     * FXML Controller class
+     * DetailsController class
      *
-     * @author study
+     * @author Claire Chemutai Langat
      */
     public class DetailsController implements Initializable {
         ObservableList<ChairsClass> theChairList= FXCollections.observableArrayList();
@@ -48,8 +49,6 @@ import java.io.FileWriter;
         private Label lblDetail;
         private Stage detailStage;
         ObservableList<Person> data;
-        //=FXCollections.observableArrayList();
-
 
         private EditDetailsController editCustomerController = null;
         private AddingDetailsController addCustomerController=null;
@@ -121,6 +120,12 @@ import java.io.FileWriter;
         @FXML
         private TableColumn<CanopiesClass, Float> costCanopiesCol;
         @FXML
+        private TableColumn<Person, Integer> customerID;
+
+        Person selectedCustomer;
+        private int CID;
+        private boolean isNew;
+        @FXML
         private MenuItem closeMenuBar;
         @FXML
         private MenuItem goHomeID;
@@ -129,21 +134,194 @@ import java.io.FileWriter;
         @FXML
         private Button viewTransactionsID;
         @FXML
-        private TableColumn<Person, Integer> customerID;
-
-        Person selectedCustomer;
-        private int CID;
-        private boolean isNew;
+        private Button refreshBtn;
 
 
 
 
         /**
-         * Initializes the controller class.
+         * Initializes the detailsController class.
          */
         @Override
         public void initialize(URL url, ResourceBundle rb) {
-            data = FXCollections.observableArrayList();
+            refresh();
+
+        }     
+        /**
+         * show the details of an the customer
+         * @param selectedCustomer is an a customer
+         * @param isNew is a boolean
+         */
+
+        private void showDetailStage(Person selectedCustomer, boolean isNew) throws IOException, NullPointerException
+        , RuntimeException{
+            System.out.println("On detail stage");
+            Parent root = FXMLLoader.load(getClass().getResource("addingDetails.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+            stage.setScene(scene);
+            System.out.println("finished detail stage");
+
+        }
+        
+        /**
+         * Opens the add details page
+         * 
+         */
+
+        @FXML
+        private void addDetailsAction(ActionEvent event) throws IOException {
+            Person selectedCustomer = null;
+            boolean isNew = true;
+            showDetailStage(selectedCustomer, isNew);
+
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("details.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+                stage.setScene(scene);
+            }
+            catch(IOException e) {
+                System.err.println(e.toString());
+            }
+        }
+
+          /**
+         * Opens the edit details page
+         * 
+         */
+
+        @FXML
+        private void editDetailsAction(ActionEvent event) throws IOException {
+            this.selectedCustomer = null;
+            this.isNew = true;
+            this.CID = -1;
+            int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
+                CID = selectedCustomer.getCustomerID(); 
+                
+            } 
+            
+            
+            
+            if (detailStage == null) {
+                 FXMLLoader loader = new FXMLLoader();
+                 Parent detailPane = null;
+            try {
+                loader.setLocation(getClass().getResource("editDetails.fxml"));
+                detailPane = loader.load();
+            }
+            catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            
+            
+            Scene scene = new Scene(detailPane);
+            detailStage= new Stage();
+            detailStage.setTitle("Customer  Details");
+            detailStage.initModality(Modality.APPLICATION_MODAL);
+            detailStage.setScene(scene);
+            editCustomerController = loader.getController();
+            editCustomerController.passHandleOnStage(detailStage);
+        }
+            
+            editCustomerController.showCustomerDetail(selectedCustomer, isNew,CID);
+            detailStage.showAndWait();
+            
+
+        
+        }
+        
+        /**
+         * closes the page
+         * 
+         */
+
+        @FXML
+        private void closePage(ActionEvent event) {
+            Platform.exit();
+        }
+        
+         /**
+         * takes the user back to home page
+         * 
+         */
+
+        @FXML
+        private void goHomeAction(ActionEvent event) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+                stage.setScene(scene);
+            }
+            catch(IOException e) {
+                System.err.println(e.toString());
+            }
+        }
+        
+        /**
+         * Allows the user to log in
+         * 
+         */
+
+        @FXML
+        private void logOutAction(ActionEvent event) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("registrationPage.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
+                stage.setScene(scene);
+            }
+            catch(IOException e) {
+                System.err.println(e.toString());
+            }
+        }
+        
+        /**
+         * prints the user details to a text file
+         * 
+         */
+
+        @FXML
+        private void viewTransactionsActions(ActionEvent event) throws IOException {
+           this.selectedCustomer = null;
+            this.isNew = true;
+            
+            int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
+                
+            }  
+            try{
+            File file = new File("CUSTOMERSDETAIL.txt");
+               try (BufferedWriter out = new BufferedWriter(new FileWriter(file, true))) {
+                   out.write(selectedCustomer.getCustomer()+"\t");
+                   
+                   out.write(selectedCustomer.getPhone_number().toString()+"\t");
+                  
+                   out.write(selectedCustomer.getAddress()+"\t");
+                   
+                   out.write(selectedCustomer.getItem()+"\t");
+                   
+                   out.write(selectedCustomer.getQuantity().toString()+"\t");
+                   
+                   out.write(selectedCustomer.getDate().toString()+"\t");
+                   out.newLine();
+               }
+            } catch (IOException e) {
+            }
+        }
+        
+         /**
+         * refreshes the page
+         * 
+         */
+        public void refresh(){
+            
+                        data = FXCollections.observableArrayList();
             System.out.println("Getting the customer details into table and database");
 
                     try{
@@ -311,143 +489,18 @@ import java.io.FileWriter;
             System.out.println("FINISHED SEARCHING");
             
 
-        }     
-        /**
-         * show the details of an employee
-         * @param selectedCustomer is an employee
-         * @param isNew is a boolean
-         */
-
-        private void showDetailStage(Person selectedCustomer, boolean isNew) throws IOException, NullPointerException
-        , RuntimeException{
-            System.out.println("On detail stage");
-            Parent root = FXMLLoader.load(getClass().getResource("addingDetails.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) addDetailBtn.getScene().getWindow();
-            stage.setScene(scene);
-            System.out.println("finished detail stage");
-
-        }
-
-
-
-        @FXML
-        private void addDetailsAction(ActionEvent event) throws IOException {
-            Person selectedCustomer = null;
-            boolean isNew = true;
-            showDetailStage(selectedCustomer, isNew);
-
-
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("details.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
-                stage.setScene(scene);
-            }
-            catch(IOException e) {
-                System.err.println(e.toString());
-            }
-        }
-
-         
-
-        @FXML
-        private void editDetailsAction(ActionEvent event) throws IOException {
-            this.selectedCustomer = null;
-            this.isNew = true;
-            this.CID = -1;
-            int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
-            if (selectedIndex >= 0) {
-                selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
-                CID = selectedCustomer.getCustomerID(); 
-            }     
-            
-            if (detailStage == null) {
-                 FXMLLoader loader = new FXMLLoader();
-                 Parent detailPane = null;
-            try {
-                loader.setLocation(getClass().getResource("editDetails.fxml"));
-                detailPane = loader.load();
-            }
-            catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            
-            Scene scene = new Scene(detailPane);
-            detailStage= new Stage();
-            detailStage.setTitle("Customer  Details");
-            detailStage.initModality(Modality.APPLICATION_MODAL);
-            detailStage.setScene(scene);
-            editCustomerController = loader.getController();
-            editCustomerController.passHandleOnStage(detailStage);
+        
         }
         
-        editCustomerController.showCustomerDetail(selectedCustomer, isNew,CID);
-        detailStage.showAndWait();
-        }
+        /**
+         * Allows the user to refresh
+         * 
+         */
 
-
-
-        @FXML
-        private void closePage(ActionEvent event) {
-            Platform.exit();
-        }
-
-        @FXML
-        private void goHomeAction(ActionEvent event) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
-                stage.setScene(scene);
-            }
-            catch(IOException e) {
-                System.err.println(e.toString());
-            }
-        }
-
-        @FXML
-        private void logOutAction(ActionEvent event) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("registrationPage.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) addDetailBtn.getScene().getWindow();
-                stage.setScene(scene);
-            }
-            catch(IOException e) {
-                System.err.println(e.toString());
-            }
-        }
-
-        @FXML
-        private void viewTransactionsActions(ActionEvent event) throws IOException {
-           this.selectedCustomer = null;
-            this.isNew = true;
-            
-            int selectedIndex = customerDetailsTable.getSelectionModel().getSelectedIndex();
-            if (selectedIndex >= 0) {
-                selectedCustomer = customerDetailsTable.getItems().get(selectedIndex);
-                
-            }  
-            try{
-            File file = new File("CUSTOMERSDETAIL.txt");
-               try (BufferedWriter out = new BufferedWriter(new FileWriter(file, true))) {
-                   out.write(selectedCustomer.getCustomer()+"\t");
-                   
-                   out.write(selectedCustomer.getPhone_number().toString()+"\t");
-                  
-                   out.write(selectedCustomer.getAddress()+"\t");
-                   
-                   out.write(selectedCustomer.getItem()+"\t");
-                   
-                   out.write(selectedCustomer.getQuantity().toString()+"\t");
-                   
-                   out.write(selectedCustomer.getDate().toString()+"\t");
-                   out.newLine();
-               }
-            } catch (IOException e) {
-            }
-        }
+    @FXML
+    private void refreshAction(ActionEvent event) {
+        refresh();
+    }
         
        
 
@@ -456,19 +509,4 @@ import java.io.FileWriter;
 
 
 
- /*
-        public void writeToFile(ObservableList<Person> list, String path) {
-            BufferedWriter out = null;
-            try {
-                    File file = new File(path);
-                    out = new BufferedWriter(new FileWriter(file, true));
-                    for (Object s : list) {
-                            out.write((String)s);
-                            out.newLine();
-
-                    }
-                    out.close();
-            } catch (IOException e) {
-            }
-    }
-        */
+ 

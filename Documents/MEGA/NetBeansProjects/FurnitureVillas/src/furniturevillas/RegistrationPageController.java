@@ -29,9 +29,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * RegistrationPageController class
  *
- * @author study
+ * @author Claire Chemutai
  */
 public class RegistrationPageController implements Initializable {
 
@@ -89,7 +89,10 @@ public class RegistrationPageController implements Initializable {
         System.out.println("Connection established");
     } 
     
-    
+    /**
+    * method to sign in the user class
+    *
+    */
 
     @FXML
     private void signInAction(ActionEvent event)throws SQLException, IOException, ClassNotFoundException, 
@@ -166,15 +169,17 @@ public class RegistrationPageController implements Initializable {
                             }); 
             }
         
-                            
-                            
-        //ps.close();
         
         } catch (final SQLException e) {
                 }
         
         
     }
+    
+    /**
+    * method to cancel registration in the user class
+    *
+    */
 
     @FXML
     private void cancelRgstrnAction(ActionEvent event) {

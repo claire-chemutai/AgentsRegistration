@@ -16,14 +16,13 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author study
+ * @author Claire Chemutai
  */
 
 
 public class Person {
 
     private final StringProperty address;
-    //= new SimpleStringProperty();
 
     public String getAddress() {
         return address.get();
@@ -38,7 +37,6 @@ public class Person {
     }
 
     private final IntegerProperty phone_number;
-    //= new SimpleIntegerProperty();
 
     public Integer getPhone_number() {
         return phone_number.get();
@@ -51,24 +49,7 @@ public class Person {
     public IntegerProperty phone_numberProperty() {
         return phone_number;
     }
-/*
-    private final StringProperty date ;
-    //= new SimpleStringProperty();
-
-    public String getDate() {
-        return date.get();
-    }
-
-    public void setDate(String value) {
-        date.set(value);
-    }
-
-    public StringProperty dateProperty() {
-        return date;
-    }
-*/
     private final IntegerProperty quantity;
-    //= new SimpleStringProperty();
 
     public Integer getQuantity() {
         return quantity.get();
@@ -82,7 +63,6 @@ public class Person {
         return quantity;
     }
     private final StringProperty item ;
-    //= new SimpleStringProperty();
 
     public String getItem() {
         return item.get();
@@ -97,8 +77,6 @@ public class Person {
     }
 
     private final StringProperty customer;
-    //= new SimpleStringProperty();
-
     public String getCustomer() {
         return customer.get();
     }
@@ -112,7 +90,6 @@ public class Person {
     }
     
     private final FloatProperty cost;
-    //= new SimpleFloatProperty();
 
     public float getCost() {
         return cost.get();
@@ -140,7 +117,6 @@ public class Person {
         return date;
     }
     private  IntegerProperty customerID ;
-    //= new SimpleIntegerProperty();
 
     public int getCustomerID() {
         return customerID.get();
@@ -153,23 +129,6 @@ public class Person {
     public IntegerProperty customerIDProperty() {
         return customerID;
     }
-    /*
-    private final IntegerProperty duration;
-    //= new SimpleIntegerProperty();
-
-    public int getDuration() {
-        return duration.get();
-    }
-
-    public void setDuration(int value) {
-        duration.set(value);
-    }
-
-    public IntegerProperty durationProperty() {
-        return duration;
-    }
-    
-    */
 
     @Override
     public String toString() {

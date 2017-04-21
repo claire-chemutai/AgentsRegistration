@@ -98,8 +98,8 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="addDetailBtn" layoutX="132.0" layoutY="387.0" mnemonicParsing="false" onAction="#addDetailsAction" prefHeight="25.0" prefWidth="94.0" text="ADD" />
-      <Button fx:id="editDetailBtn" layoutX="297.0" layoutY="387.0" mnemonicParsing="false" onAction="#editDetailsAction" prefHeight="25.0" prefWidth="109.0" text="EDIT" />
+      <Button fx:id="addDetailBtn" layoutX="65.0" layoutY="387.0" mnemonicParsing="false" onAction="#addDetailsAction" prefHeight="25.0" prefWidth="94.0" text="ADD" />
+      <Button fx:id="editDetailBtn" layoutX="207.0" layoutY="387.0" mnemonicParsing="false" onAction="#editDetailsAction" prefHeight="25.0" prefWidth="109.0" text="EDIT" />
       <TextField fx:id="searchDetailField" layoutX="551.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" promptText="Search" />
       <MenuBar layoutX="571.0" layoutY="4.0">
          <menus>
@@ -116,6 +116,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="viewTransactionsID" layoutX="472.0" layoutY="387.0" mnemonicParsing="false" onAction="#viewTransactionsActions" prefHeight="25.0" prefWidth="94.0" text="PRINT TO FILE" />
+      <Button fx:id="viewTransactionsID" layoutX="363.0" layoutY="387.0" mnemonicParsing="false" onAction="#viewTransactionsActions" prefHeight="25.0" prefWidth="94.0" text="PRINT TO FILE" />
+      <Button fx:id="refreshBtn" layoutX="519.0" layoutY="387.0" mnemonicParsing="false" onAction="#refreshAction" prefHeight="25.0" prefWidth="94.0" text="REFRESH" />
    </children>
 </AnchorPane>

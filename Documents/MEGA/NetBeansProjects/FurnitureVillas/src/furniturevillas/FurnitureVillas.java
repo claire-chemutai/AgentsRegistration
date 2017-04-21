@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author study
+ * @author Claire Chemutai
  */
 public class FurnitureVillas extends Application {
     

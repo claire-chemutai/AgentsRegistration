@@ -9,9 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- *
- * @author study
+ * @author Claire Chemutai
  */
+
 public class RegisterUser {
     public void addUser(String username,String pass_word){
         
